@@ -7,7 +7,7 @@ export async function GET(
 ) {
     try {
         const session = await getAdSession();
-        console.log(session);
+        // console.log(session);
         if (session!=null){
             return NextResponse.json({
                 message: "Login Successful",

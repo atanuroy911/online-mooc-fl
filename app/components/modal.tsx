@@ -20,6 +20,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, course }) => {
         <p><strong>Department:</strong>  {course?.department}</p>
         <p><strong>Department Short:</strong> {course?.department_short}</p>
         <p><strong>Instructor:</strong> {course?.instructor}</p>
+        <p><strong>Course Credits:</strong> {course?.credits}</p>
         <p><strong>Duration:</strong> {course?.duration}</p>
         <p><strong>Learning Objectives:</strong><br></br> {course?.learning_objectives}</p>
         <p><strong>Prerequisites:</strong><br></br> {course?.prerequisites}</p>

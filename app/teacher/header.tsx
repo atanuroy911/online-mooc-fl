@@ -33,8 +33,8 @@ const Header: React.FC = () => {
     if (response.status == 200) {
       // console.log(response.data.message);
       setSession(null);
-      toast.success(response.data.message);
       router.push('/teacher/login')
+      toast.success(response.data.message);
     }
   };
 
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
                 <button className="px-4 py-2 text-black ">
                   <RxAvatar size={28} />
                 </button>
-                <p>{session.user?.name}</p>
+                <p>{session.user?.username}</p>
               </div>
               <button onClick={handleLogout} className="py-2 px-4 cursor-pointer hover:bg-gray-100 text-red-500">Logout</button>
 

@@ -32,7 +32,7 @@ const Courses = () => {
   // Function to handle applying filters
   const applyFilters = () => {
     // Filter the courses based on the search criteria
-    const filtered = filteredCourses.filter((course:any) => {
+    const filtered = filteredCourses.filter((course: any) => {
       return (
         course?.name.toLowerCase().includes(courseName.toLowerCase()) &&
         course?.department.toLowerCase().includes(courseDepartment.toLowerCase())

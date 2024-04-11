@@ -4,15 +4,15 @@ import bcrypt from "bcrypt";
 
 export async function POST(request) {
   try {
-    const { username, email, password } = await request.json();
+    const { firstName, lastName, email, password, rollNumber, username } = await request.json();
 
     // Hash the password
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const db = await pool.getConnection();
-    const query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-    const values = [username, email, hashedPassword];
+    const query = "INSERT INTO Users (FirstName, LastName, RollNumber, Password, Email, username) VALUES (?, ?, ?, ?, ?, ?)";
+    const values = [firstName, lastName, rollNumber, hashedPassword, email, username];
     const [result] = await db.execute(query, values);
 
     db.release();

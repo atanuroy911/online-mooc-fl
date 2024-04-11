@@ -6,6 +6,7 @@ import { getSession } from '@/utils/auth';
 import axios from 'axios';
 import { RxAvatar } from "react-icons/rx";
 import { toast } from 'react-toastify';
+import { useRouter } from '../hooks/customRouter';
 
 
 const Header: React.FC = () => {
@@ -13,6 +14,7 @@ const Header: React.FC = () => {
   const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
   const [session, setSession] = useState(null);
   const { categories } = categoriesData; // Extract categories from JSON data
+  const router = useRouter();
 
   useEffect(() => {
     // Assume getSession is an asynchronous function that fetches the session
@@ -45,6 +47,7 @@ const Header: React.FC = () => {
       if (response.status == 200) {
         // console.log(response.data.message);
         setSession(null);
+        router.push('/');
         toast.success(response.data.message);
       }
   };
@@ -125,18 +128,18 @@ const Header: React.FC = () => {
           )}
         </div>
       </div>
-      <div className="flex items-center relative">
+      <div className="flex items-center relative py-2 px-2">
         {session ? (
           <>
-            <div className="mx-auto relative">
+            <div className="mx-auto relative ">
               <button onClick={handleDropdownToggle2} className="px-4 py-2 text-black ">
                 <RxAvatar size={28}/>
               </button>
+              {/* <p>{session.user?.username}</p> */}
               {isDropdownOpen2 && (
                 <div className="absolute top-full px-4 right-0 text-sm border bg-white border-gray-300 rounded shadow-md z-10">
                   <ul>
-                    <li className="py-2 px-4 cursor-pointer hover:bg-gray-100">My Courses</li>
-                    <li className="py-2 px-4 cursor-pointer hover:bg-gray-100">Cart</li>
+                    <li className="py-2 px-4 cursor-pointer hover:bg-gray-100"><Link href='/dashboard'>My Dashboard</Link></li>
                     <li onClick={handleLogout} className="py-2 px-4 cursor-pointer hover:bg-gray-100 text-red-500">Logout</li>
                   </ul>
                 </div>

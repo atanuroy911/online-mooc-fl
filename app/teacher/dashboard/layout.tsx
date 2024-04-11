@@ -3,6 +3,7 @@
 import Footer from "@/app/components/footer";
 import Header from "../header";
 
+
 export default function RootLayout({
     children,
 }: Readonly<{

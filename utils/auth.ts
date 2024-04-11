@@ -20,10 +20,10 @@ export async function decrypt(input: string): Promise<any> {
   return payload;
 }
 
-export async function login(email: string, username: string) {
+export async function login(username: string, email: string, firstName: string, lastName: string, rollNumber: any) {
   // Verify credentials && get the user
 
-  const user = { email: email, name: username };
+  const user = { username: username, email: email, firstName: firstName, lastName: lastName, rollNumber: rollNumber };
 
   // Create the session
   const hoursToExpire = 24;
@@ -40,7 +40,7 @@ export async function login(email: string, username: string) {
 export async function teacherlogin(email: string, username: string, full_name: string) {
   // Verify credentials && get the user
 
-  const user = { email: email, name: username, full_name: full_name};
+  const user = { email: email, username: username, full_name: full_name};
 
   // Create the session
   const hoursToExpire = 6;

@@ -10,7 +10,7 @@ export async function POST(req) {
         const { email, password } = await req.json();
 
         const db = await pool.getConnection();
-        const query = "SELECT * FROM users WHERE email = ?";
+        const query = "SELECT * FROM Users WHERE Email = ?";
         const [rows] = await db.execute(query, [email]);
         db.release();
 
@@ -23,7 +23,7 @@ export async function POST(req) {
         }
 
         const user = rows[0];
-        const isPasswordValid = await bcrypt.compare(password, user.password);
+        const isPasswordValid = await bcrypt.compare(password, user.Password);
 
         if (!isPasswordValid) {
             return NextResponse.json({
@@ -32,7 +32,7 @@ export async function POST(req) {
                 status: 401,
             });
         }
-        await login(user.email, user.username);        
+        await login(user.username, user.Email, user.FirstName, user.LastName, user.RollNumber);        
 
         return NextResponse.json({
             message: "Login Successful",
@@ -40,6 +40,7 @@ export async function POST(req) {
             status: 200,
         });
     } catch (error) {
+        // console.log(error);
         return NextResponse.json({
             message: "Error Occured",
             error: error
