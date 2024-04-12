@@ -14,6 +14,7 @@ import AssignStudentsPage from './ui/AssignStudents';
 import AddCoursesPage from './ui/AddCourses';
 import Posts from '@/app/forum/Forum';
 import Courses from './ui/Courses';
+import AccountSettings from './ui/AccountSettings';
 
 // import AssignStudents from './pages/AssignStudents';
 // import AccountSettings from './pages/AccountSettings';
@@ -52,8 +53,8 @@ export default function Page() {
         'Add Courses': <AddCoursesPage />,
         'All Courses': <Courses />,
         'Assign Students': <AssignStudentsPage />,
-        'Discussion Forum': <Posts />,
-        // 'Account Settings': <AccountSettings />,
+        'Discussion Forum': <Posts admin={true}/>,
+        'Account Settings': <AccountSettings session={session} />,
     };
 
     const sidebarOptions = [

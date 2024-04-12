@@ -11,6 +11,8 @@ import { FaCirclePlus, FaPeopleRoof } from 'react-icons/fa6';
 // Import your page components
 import Home from './ui/Home';
 import Posts from '@/app/forum/Forum';
+import Courses from './ui/Courses';
+import AccountSettings from './ui/AccountSettings';
 // import AssignStudents from './pages/AssignStudents';
 // import AccountSettings from './pages/AccountSettings';
 
@@ -46,14 +48,15 @@ export default function Page() {
 
     // Map of page components corresponding to sidebar options
     const pageComponents = {
-        Home: <Home />,
-        'Discussion Forum': <Posts />,
-        // 'Account Settings': <AccountSettings />,
+        Home: <Home session={session} />,
+        'My Courses': <Courses session={session} />,
+        'Discussion Forum': <Posts admin={false} />,
+        'Account Settings': <AccountSettings session={session} />,
     };
 
     const sidebarOptions = [
         { icon: <MdDashboard />, label: 'Home', link: '/dashboard/summary' },
-        { icon: <MdBook />, label: 'Courses', link: '/dashboard/courses' },
+        { icon: <MdBook />, label: 'My Courses', link: '/dashboard/courses' },
         { icon: <MdOutlineChat />, label: 'Discussion Forum', link: '/dashboard/discussion-forum' },
         { icon: <MdManageAccounts />, label: 'Account Settings', link: '/dashboard/account-settings' },
     ];

@@ -120,7 +120,6 @@ const Header: React.FC = () => {
             <div className="absolute top-full left-0 py-2 mt-0 bg-white border border-gray-300 rounded shadow-md">
                 <div className="py-2 px-4">
                   <ul>
-                    <li className='w-full hover:bg-gray-100'><a href='#free-courses' className="">Free</a></li>
                     <li className='w-full hover:bg-gray-100'><a href='/courses' className="">Masters</a></li>
                   </ul>
                 </div>

@@ -8,7 +8,7 @@ export async function POST(request) {
 
         const db = await pool.getConnection();
 
-        const query = 'INSERT INTO `courses` (`id`, `name`, `department`, `department_short`, `credits`, `instructor`, `content`, `learning_objectives`, `prerequisites`, `duration`, `qualifications`, `experience`, `syllabus`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        const query = 'INSERT INTO `courses` (`courseId`, `name`, `department`, `department_short`, `credits`, `instructor`, `content`, `learning_objectives`, `prerequisites`, `duration`, `qualifications`, `experience`, `syllabus`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         const values = [courseCode, courseName, department, departmentShort, courseCredits, instructor, courseDescription, learningObjectives, prerequisites, duration, qualifications, experience, syllabus];
         console.log(values);
         const [result] = await db.execute(query, values);

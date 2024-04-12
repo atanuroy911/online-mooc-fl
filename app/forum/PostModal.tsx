@@ -19,13 +19,15 @@ const PostModal = ({ post, onClose, session }: { post: any, onClose: any, sessio
   const fetchData = async () => {
     setLoading(true); // Set loading to true when fetching data
     try {
-      const response = await axios.get(`/api/getcomments?postID=${post.PostID}`);
+      const response = await axios.get(`/api/getcomments?postID=${post?.PostID}`);
       setComments(response.data);
     } catch (error) {
       console.error("Error fetching comments:", error);
       // Handle error
     } finally {
       setLoading(false); // Set loading to false when data fetching is complete
+      console.log(post);
+      
     }
   };
 
@@ -64,7 +66,7 @@ const PostModal = ({ post, onClose, session }: { post: any, onClose: any, sessio
         p: 4,
       }}>
         <Typography variant="h4" gutterBottom>{post.Subject}</Typography>
-        <Typography variant="subtitle2" gutterBottom color="textSecondary">Published on: {formatTime(post.CreationDate)}</Typography>
+        <Typography variant="subtitle2" gutterBottom color="textSecondary">Published on: {formatTime(post?.CreationDate)}</Typography>
         <Typography variant="body1" gutterBottom>{post.Content}</Typography>
         <hr />
         <Typography variant="h5" gutterBottom>Comments</Typography>

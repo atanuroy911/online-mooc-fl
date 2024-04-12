@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Carousel from '../components/carousel';
-import ContentSection from '../components/ContentSection';
+// import ContentSection from '../components/ContentSection';
 
 const images = [
   "image1.jpg",
@@ -43,9 +43,9 @@ export default function Page() {
       
       {/* Add other sections/components here */}
 
-      <section id='free-courses'>
+      {/* <section id='free-courses'>
         <ContentSection/>
-      </section>
+      </section> */}
       
     </div>
   );

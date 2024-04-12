@@ -11,15 +11,20 @@ interface Post {
   Subject: string;
   CreatedBy: string;
   CreatedAt: string;
+
 }
 
 interface Session {
   user: {
-    name: string;
+    username: string;
   };
 }
 
-const Posts: React.FC = () => {
+interface PostProps {
+  admin: boolean
+}
+
+const Posts: React.FC<PostProps> = ({ admin }) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -32,16 +37,20 @@ const Posts: React.FC = () => {
   useEffect(() => {
     const fetchSession = async () => {
       try {
-        const response = await axios.get('/api/adcheck');
-        if (response.status === 200) {
-          setSession(response.data.session);
+        if (admin) {
+          const response = await axios.get('/api/adcheck');
+          if (response.status === 200) {
+            setSession(response.data.session);
+          }
         }
-        if (session == null) {
+        else {
           const response = await axios.get('/api/check');
           if (response.status === 200) {
             setSession(response.data.session);
           }
         }
+        console.log(session);
+
       } catch (error) {
         console.error('Error fetching session:', error);
       }
@@ -134,7 +143,7 @@ const Posts: React.FC = () => {
                 </div>
                 <div>
                   <Button variant="contained" color="primary" onClick={() => handlePostClick(post)}>View</Button>
-                  {session && session.user?.username === post.CreatedBy && (
+                  {session && session?.user?.username === post.CreatedBy && (
                     <>
                       <Button variant="contained" color="warning" onClick={() => handleEditPost(post)}>Edit</Button>
                       <Button variant="contained" color="error" onClick={() => handleDeletePost(post)}>Delete</Button>

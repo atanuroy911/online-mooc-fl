@@ -1,6 +1,5 @@
 import React from 'react';
 import AddCoursesForm from '../form/AddCoursesForm';
-import Courses from './Courses';
 
 const AddCoursesPage = () => {
     return (
