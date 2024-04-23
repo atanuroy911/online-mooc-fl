@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "utils/db.js", "app/libs/mysql.tsx", "app/api/signup/route.js", "app/api/check/route.ts", "app/api/login/route.js", "app/api/teacherlogin/route.js", "app/loading.js", "app/teacher/dashboard/form/AddPostModal.tsx", "app/teacher/dashboard/ui/PostModal.tsx", "app/api/getTasks/route.ts", "app/api/marktask/route.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "utils/db.js", "app/libs/mysql.tsx", "app/api/signup/route.js", "app/api/check/route.ts", "app/api/login/route.js", "app/api/teacherlogin/route.js", "app/loading.js", "app/teacher/dashboard/form/AddPostModal.tsx", "app/teacher/dashboard/ui/PostModal.tsx", "app/api/getTasks/route.ts", "app/api/marktask/route.js", "app/api/unassignstudent/route.js"],
   "exclude": ["node_modules"]
 }

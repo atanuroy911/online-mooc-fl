@@ -132,7 +132,7 @@ const Courses = () => {
 
     const handleStudentsButtonClick = async (course, event) => {
         event.stopPropagation();
-
+        setSelectedCourse(course);
         try {
             const response = await axios.get(`/api/getStCourse?id=${course.id}`);
             setStudentsInCourse(response.data);
@@ -146,11 +146,15 @@ const Courses = () => {
     };
 
     const handleUnassignStudent = async (studentID, event) => {
+        event.stopPropagation();
         try {
             // Make an API call to unassign the student from the course
-            await axios.get(`/api/unassignstudent?courseID=${selectedCourse.id}&studentID=${studentID}`);
+            // console.log(studentID);
+            const response = await axios.delete(`/api/unassignstudent?courseID=${selectedCourse.id}&studentID=${studentID}`);
             // Refresh the list of students in the course
             handleStudentsButtonClick(selectedCourse, event);
+            console.log(response.data);
+            
             toast.success('Student Unassigned');
         } catch (error) {
             console.error('Error unassigning student:', error);
@@ -269,11 +273,11 @@ const Courses = () => {
                                     </TableRow>
                                 ) : (
                                     studentsInCourse.map((student) => (
-                                        <StyledTableRow key={student.RollNumber}>
-                                            <StyledTableCell>{student.FirstName + ' ' + student.LastName}</StyledTableCell>
-                                            <StyledTableCell>{student.Email}</StyledTableCell>
+                                        <StyledTableRow key={student?.RollNumber}>
+                                            <StyledTableCell>{student?.FirstName + ' ' + student.LastName}</StyledTableCell>
+                                            <StyledTableCell>{student?.Email}</StyledTableCell>
                                             <StyledTableCell>
-                                                <Button onClick={(e) => handleUnassignStudent(student.UserID, e)} variant="contained" color="secondary">Unassign</Button>
+                                                <Button onClick={(e) => handleUnassignStudent(student?.UserID, e)} variant="contained" color="secondary">Unassign</Button>
                                             </StyledTableCell>
                                         </StyledTableRow>
                                     ))
